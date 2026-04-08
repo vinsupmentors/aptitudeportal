@@ -934,14 +934,28 @@ input, select, textarea, button { font-family: inherit; }
   .mobile-stats-strip { display: none !important; }
   .desktop-section-header { display: none !important; }
 
-  /* Featured test card — CTA full width on mobile */
-  .featured-test-card > div:last-child { flex-direction: column !important; }
-  .featured-test-card > div:last-child > div:last-child { width: 100% !important; }
-  .featured-test-card > div:last-child > div:last-child button { width: 100% !important; justify-content: center !important; }
+  /* Featured card: stack vertically on mobile */
+  .featured-card-body {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    padding: 16px 16px !important;
+  }
+  .featured-card-body > div:last-child {
+    width: 100% !important;
+  }
+  .featured-card-body > div:last-child button,
+  .featured-card-body > div:last-child > div > button {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* Progress card: hide donut layout on mobile, show compact */
+  .progress-desktop { display: none !important; }
+  .progress-mobile { display: block !important; }
 }
 
 @media (max-width: 480px) {
-  .kpi-grid { grid-template-columns: repeat(2, 1fr) !important; }
   .auth-card { padding: 24px 16px !important; border-radius: var(--radius-xl) !important; }
   .category-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
 }

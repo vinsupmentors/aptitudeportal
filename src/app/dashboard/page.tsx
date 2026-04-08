@@ -134,133 +134,117 @@ function FeaturedTestCard({
   if (!featured) return null;
 
   return (
-    <div className="animate-fade-up featured-test-card" style={{ marginBottom: "24px", borderRadius: "24px", overflow: "hidden", boxShadow: "0 16px 56px rgba(1,79,94,0.35), 0 4px 16px rgba(0,0,0,0.12)", position: "relative" }}>
+    <div className="animate-fade-up featured-test-card" style={{
+      marginBottom: "24px", borderRadius: "20px", overflow: "hidden",
+      boxShadow: "0 8px 40px rgba(1,79,94,0.22), 0 2px 8px rgba(0,0,0,0.07)",
+      border: "1.5px solid rgba(0,168,150,0.25)",
+      background: "linear-gradient(135deg, rgba(0,168,150,0.06) 0%, rgba(2,128,144,0.04) 50%, #ffffff 100%)",
+      position: "relative",
+    }}>
+      {/* Subtle top accent line */}
+      <div style={{ height: 3, background: "linear-gradient(90deg, #028090, #00A896, #05668D)", position: "absolute", top: 0, left: 0, right: 0 }} />
 
-      {/* ── Hero visual top half ── */}
-      <div style={{ background: "linear-gradient(135deg, #012a35 0%, #014f5e 40%, #016875 100%)", padding: "28px 24px 24px", position: "relative", overflow: "hidden" }}>
-
-        {/* Background glow blobs */}
-        <div style={{ position: "absolute", top: -60, right: -40, width: 220, height: 220, borderRadius: "50%", background: "radial-gradient(circle, rgba(0,200,180,0.22) 0%, transparent 70%)", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", bottom: -40, left: -30, width: 160, height: 160, borderRadius: "50%", background: "radial-gradient(circle, rgba(5,102,141,0.3) 0%, transparent 70%)", pointerEvents: "none" }} />
-
-        {/* Top: Urgency pill + badge row */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "20px", flexWrap: "wrap", gap: "8px" }}>
-          <div style={{
-            display: "inline-flex", alignItems: "center", gap: "6px",
-            background: "rgba(255,215,0,0.18)", border: "1px solid rgba(255,215,0,0.45)",
-            borderRadius: "20px", padding: "5px 12px",
-            fontSize: "0.65rem", fontWeight: 800, color: "#FFD700", letterSpacing: "0.06em", textTransform: "uppercase",
-          }}>
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="#FFD700"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            Free for 7 Days
-          </div>
-          <span style={{
-            fontSize: "0.62rem", fontWeight: 700, padding: "4px 12px",
-            borderRadius: "20px", background: DIFF_PILL[featured.difficulty].bg, color: DIFF_PILL[featured.difficulty].color,
-          }}>{featured.difficulty}</span>
-        </div>
-
-        {/* Central: icon + title */}
-        <div style={{ display: "flex", alignItems: "center", gap: "18px", marginBottom: "22px" }}>
-          {/* Glowing play icon */}
-          <div style={{ position: "relative", flexShrink: 0 }}>
-            <div style={{
-              position: "absolute", inset: -6,
-              borderRadius: "50%",
-              background: "rgba(0,168,150,0.25)",
-              filter: "blur(8px)",
-            }} />
-            <div style={{
-              width: 64, height: 64, borderRadius: "50%",
-              background: "linear-gradient(135deg, #00A896, #028090)",
-              border: "2.5px solid rgba(255,255,255,0.3)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              boxShadow: "0 8px 28px rgba(0,168,150,0.45)",
-              position: "relative",
-            }}>
-              <svg viewBox="0 0 40 40" fill="none" width="30" height="30">
-                <path d="M15 11l18 9-18 9V11z" fill="white"/>
-              </svg>
-            </div>
-          </div>
-
-          <div>
-            <p style={{ margin: "0 0 4px", fontSize: "0.68rem", fontWeight: 700, color: "rgba(255,255,255,0.55)", textTransform: "uppercase", letterSpacing: "0.08em" }}>
-              {featured.company} · Foundation Pack
-            </p>
-            <h4 style={{ margin: 0, fontSize: "1.22rem", color: "white", fontWeight: 900, lineHeight: 1.25, letterSpacing: "-0.02em" }}>
-              {featured.title}
-            </h4>
-          </div>
-        </div>
-
-        {/* Stats strip inside hero */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1px", background: "rgba(255,255,255,0.1)", borderRadius: "14px", overflow: "hidden" }}>
-          {[
-            { icon: "⏱", label: "Duration", value: featured.duration },
-            { icon: "📝", label: "Questions", value: `${featured.questions} Qs` },
-            { icon: "✅", label: "Marking", value: "No Penalty" },
-          ].map((s, i) => (
-            <div key={i} style={{ background: "rgba(0,0,0,0.2)", padding: "10px 8px", textAlign: "center", backdropFilter: "blur(4px)" }}>
-              <div style={{ fontSize: "1rem", marginBottom: "3px" }}>{s.icon}</div>
-              <div style={{ color: "white", fontWeight: 800, fontSize: "0.78rem" }}>{s.value}</div>
-              <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.6rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em" }}>{s.label}</div>
-            </div>
-          ))}
-        </div>
+      {/* Urgency banner */}
+      <div style={{
+        background: "linear-gradient(90deg, #014f5e, #028090, #00A896, #028090, #014f5e)",
+        backgroundSize: "300% 100%",
+        animation: "shimmer 3s ease infinite",
+        padding: "7px 20px",
+        display: "flex", alignItems: "center", justifyContent: "center", gap: "10px",
+        fontSize: "0.72rem", fontWeight: 800, color: "white",
+        letterSpacing: "0.08em", textTransform: "uppercase",
+        marginTop: 3,
+      }}>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#FFD700"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        Free for 7 Days Only — Start Now!
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#FFD700"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
       </div>
 
-      {/* ── Bottom CTA half ── */}
-      <div style={{ background: "#ffffff", padding: "18px 24px" }}>
-        {hasTakenTest ? (
-          <div style={{ display: "flex", gap: "10px" }}>
-            <button
-              onClick={onResults}
-              style={{
-                flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: "8px",
-                padding: "13px 16px", borderRadius: "14px",
+      {/* Main horizontal body */}
+      <div className="featured-card-body" style={{ display: "flex", alignItems: "center", gap: "20px", padding: "18px 22px" }}>
+
+        {/* Left: Number badge */}
+        <div style={{
+          width: 52, height: 52, borderRadius: "14px", flexShrink: 0,
+          background: "linear-gradient(135deg, #028090, #00A896)",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          boxShadow: "0 6px 20px rgba(2,128,144,0.35)",
+          position: "relative",
+        }}>
+          {/* Glow ring */}
+          <div style={{ position: "absolute", inset: -3, borderRadius: "17px", border: "1.5px solid rgba(0,168,150,0.35)", pointerEvents: "none" }} />
+          <span style={{ color: "white", fontWeight: 900, fontSize: "1.1rem", letterSpacing: "-0.02em" }}>01</span>
+        </div>
+
+        {/* Middle: info */}
+        <div style={{ flex: 1, minWidth: 0 }}>
+          {/* Badges */}
+          <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "6px", flexWrap: "wrap" }}>
+            <span style={{
+              fontSize: "0.6rem", fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase",
+              padding: "3px 10px", borderRadius: "20px",
+              background: "rgba(2,128,144,0.1)", color: "var(--primary-dark)",
+              border: "1px solid rgba(2,128,144,0.2)",
+            }}>⭐ Start Here</span>
+            <span style={{
+              fontSize: "0.6rem", fontWeight: 700, padding: "3px 10px", borderRadius: "20px",
+              background: DIFF_PILL[featured.difficulty].bg, color: DIFF_PILL[featured.difficulty].color,
+            }}>{featured.difficulty}</span>
+          </div>
+
+          <h4 style={{ margin: "0 0 5px", fontSize: "1.08rem", color: "var(--primary-dark)", fontWeight: 900, letterSpacing: "-0.01em", lineHeight: 1.3 }}>
+            {featured.title}
+          </h4>
+
+          {/* Meta row */}
+          <div style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "0.75rem", color: "var(--text-muted)", flexWrap: "wrap" }}>
+            <span style={{ fontWeight: 600 }}>{featured.company}</span>
+            <span style={{ opacity: 0.4 }}>•</span>
+            <span style={{ display: "flex", alignItems: "center", gap: "3px" }}><Clock size={11} /> {featured.duration}</span>
+            <span style={{ opacity: 0.4 }}>•</span>
+            <span style={{ display: "flex", alignItems: "center", gap: "3px" }}><HelpCircle size={11} /> {featured.questions} Questions</span>
+            <span style={{ opacity: 0.4 }}>•</span>
+            <span style={{ color: "var(--success)", fontWeight: 600 }}>No Negative Marking</span>
+          </div>
+        </div>
+
+        {/* Right: CTA */}
+        <div style={{ flexShrink: 0 }}>
+          {hasTakenTest ? (
+            <div style={{ display: "flex", flexDirection: "column", gap: "8px", alignItems: "flex-end" }}>
+              <button onClick={onResults} style={{
+                display: "flex", alignItems: "center", gap: "7px",
+                padding: "11px 22px", borderRadius: "12px",
                 background: "var(--gradient-primary)", border: "none",
-                color: "white", fontWeight: 800, fontSize: "0.92rem",
+                color: "white", fontWeight: 800, fontSize: "0.88rem",
                 cursor: "pointer", boxShadow: "0 6px 20px rgba(2,128,144,0.3)",
-              }}
-            >
-              <BarChart2 size={16} /> View My Results
+                whiteSpace: "nowrap",
+              }}>
+                <BarChart2 size={15} /> View Results
+              </button>
+              <button onClick={onStart} style={{
+                display: "flex", alignItems: "center", gap: "6px",
+                padding: "7px 14px", borderRadius: "10px",
+                background: "transparent", border: "1px solid rgba(2,128,144,0.25)",
+                color: "var(--text-muted)", fontWeight: 600, fontSize: "0.75rem",
+                cursor: "pointer", whiteSpace: "nowrap",
+              }}>
+                <PlayCircle size={13} /> Retake Test
+              </button>
+            </div>
+          ) : (
+            <button onClick={onStart} style={{
+              display: "flex", alignItems: "center", gap: "8px",
+              padding: "12px 24px", borderRadius: "12px",
+              background: "linear-gradient(135deg, #028090, #00A896)",
+              border: "none", color: "white", fontWeight: 800, fontSize: "0.9rem",
+              cursor: "pointer", boxShadow: "0 6px 24px rgba(2,128,144,0.35)",
+              whiteSpace: "nowrap",
+            }}>
+              <PlayCircle size={16} /> Start Test
             </button>
-            <button
-              onClick={onStart}
-              style={{
-                display: "flex", alignItems: "center", justifyContent: "center", gap: "6px",
-                padding: "13px 16px", borderRadius: "14px",
-                background: "rgba(2,128,144,0.07)", border: "1.5px solid rgba(2,128,144,0.2)",
-                color: "var(--primary-dark)", fontWeight: 700, fontSize: "0.85rem",
-                cursor: "pointer",
-              }}
-            >
-              <PlayCircle size={15} /> Retake
-            </button>
-          </div>
-        ) : (
-          <div>
-            <button
-              onClick={onStart}
-              style={{
-                width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: "10px",
-                padding: "15px 20px", borderRadius: "14px",
-                background: "linear-gradient(135deg, #012a35 0%, #028090 50%, #00A896 100%)",
-                border: "none", color: "white", fontWeight: 900, fontSize: "1rem",
-                cursor: "pointer", boxShadow: "0 8px 24px rgba(2,128,144,0.35)",
-                letterSpacing: "0.01em",
-              }}
-            >
-              <PlayCircle size={18} />
-              Start Test — It&apos;s Free
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </button>
-            <p style={{ textAlign: "center", margin: "10px 0 0", fontSize: "0.7rem", color: "var(--text-muted)", fontWeight: 500 }}>
-              50 questions · 60 minutes · Instant results
-            </p>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
@@ -601,29 +585,47 @@ function DashboardContent() {
                 const pctCompleted = (completed / total) * 100;
                 const pctAvailable = (available / total) * 100;
                 return (
-                  <div className="stat-card" style={{ padding: "14px 16px", display: "flex", alignItems: "center", gap: "16px" }}>
-                    <div style={{
-                      width: 64, height: 64, borderRadius: "50%", flexShrink: 0,
-                      background: `conic-gradient(#028090 0% ${pctCompleted}%, #00A896 ${pctCompleted}% ${pctCompleted + pctAvailable}%, #e0e5ec ${pctCompleted + pctAvailable}% 100%)`,
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                    }}>
-                      <div style={{ width: 40, height: 40, borderRadius: "50%", background: "var(--surface)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.72rem", fontWeight: 800, color: "var(--primary-dark)" }}>
-                        {Math.round(((completed + available) / total) * 100)}%
+                  <div className="stat-card" style={{ padding: "14px 16px", borderTop: "3px solid #028090" }}>
+                    {/* Desktop: donut + legend side by side */}
+                    <div className="progress-desktop" style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                      <div style={{
+                        width: 64, height: 64, borderRadius: "50%", flexShrink: 0,
+                        background: `conic-gradient(#028090 0% ${pctCompleted}%, #00A896 ${pctCompleted}% ${pctCompleted + pctAvailable}%, #e0e5ec ${pctCompleted + pctAvailable}% 100%)`,
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                      }}>
+                        <div style={{ width: 40, height: 40, borderRadius: "50%", background: "var(--surface)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.72rem", fontWeight: 800, color: "var(--primary-dark)" }}>
+                          {Math.round(((completed + available) / total) * 100)}%
+                        </div>
+                      </div>
+                      <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+                        <div style={{ color: "var(--text-muted)", fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: "2px" }}>Progress</div>
+                        {[
+                          { label: "Completed", value: completed, color: "#028090" },
+                          { label: "Available", value: available, color: "#00A896" },
+                          { label: "Locked", value: comingSoon, color: "#d0d9e0" },
+                        ].map((s, i) => (
+                          <div key={i} style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "0.72rem" }}>
+                            <div style={{ width: 8, height: 8, borderRadius: "50%", background: s.color, flexShrink: 0 }} />
+                            <span style={{ color: "var(--text-muted)" }}>{s.label}</span>
+                            <span style={{ fontWeight: 700, color: "var(--text-main)", marginLeft: "auto" }}>{s.value}</span>
+                          </div>
+                        ))}
                       </div>
                     </div>
-                    <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-                      <div style={{ color: "var(--text-muted)", fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: "2px" }}>Progress</div>
-                      {[
-                        { label: "Completed", value: completed, color: "#028090" },
-                        { label: "Available", value: available, color: "#00A896" },
-                        { label: "Locked", value: comingSoon, color: "#e0e5ec" },
-                      ].map((s, i) => (
-                        <div key={i} style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "0.72rem" }}>
-                          <div style={{ width: 8, height: 8, borderRadius: "50%", background: s.color, flexShrink: 0 }} />
-                          <span style={{ color: "var(--text-muted)" }}>{s.label}</span>
-                          <span style={{ fontWeight: 700, color: "var(--text-main)", marginLeft: "auto" }}>{s.value}</span>
+                    {/* Mobile: compact stacked */}
+                    <div className="progress-mobile" style={{ display: "none" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "6px" }}>
+                        <div style={{ width: 22, height: 22, borderRadius: "6px", background: "rgba(2,128,144,0.1)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                          <BarChart2 size={12} color="var(--primary-dark)" />
                         </div>
-                      ))}
+                        <div style={{ color: "var(--text-muted)", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" }}>Progress</div>
+                      </div>
+                      <div className="kpi-value" style={{ fontSize: "1.3rem", fontWeight: 900, color: "var(--primary-dark)", lineHeight: 1 }}>
+                        {Math.round(((completed + available) / total) * 100)}%
+                      </div>
+                      <div style={{ fontSize: "0.68rem", color: "var(--text-muted)", fontWeight: 500, marginTop: 3 }}>
+                        {completed} done · {comingSoon} locked
+                      </div>
                     </div>
                   </div>
                 );
