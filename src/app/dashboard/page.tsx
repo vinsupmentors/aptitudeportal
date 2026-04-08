@@ -134,140 +134,132 @@ function FeaturedTestCard({
   if (!featured) return null;
 
   return (
-    <div
-      className="animate-fade-up featured-test-card"
-      style={{
-        marginBottom: "24px",
-        borderRadius: "22px",
-        overflow: "hidden",
-        boxShadow: "0 12px 40px rgba(2,128,144,0.28), 0 4px 12px rgba(0,0,0,0.08)",
-        position: "relative",
-        background: "linear-gradient(145deg, #014f5e 0%, #028090 35%, #00A896 70%, #05668D 100%)",
-      }}
-    >
-      {/* Mesh texture overlay */}
-      <div style={{
-        position: "absolute", inset: 0, pointerEvents: "none",
-        background: "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='20' cy='20' r='15'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
-      }} />
-      {/* Glowing orbs */}
-      <div style={{ position: "absolute", top: -40, right: -20, width: 160, height: 160, borderRadius: "50%", background: "rgba(0,200,180,0.18)", filter: "blur(30px)", pointerEvents: "none" }} />
-      <div style={{ position: "absolute", bottom: -30, left: -10, width: 120, height: 120, borderRadius: "50%", background: "rgba(5,102,141,0.25)", filter: "blur(24px)", pointerEvents: "none" }} />
+    <div className="animate-fade-up featured-test-card" style={{ marginBottom: "24px", borderRadius: "24px", overflow: "hidden", boxShadow: "0 16px 56px rgba(1,79,94,0.35), 0 4px 16px rgba(0,0,0,0.12)", position: "relative" }}>
 
-      {/* Top urgency bar */}
-      <div style={{
-        background: "rgba(0,0,0,0.18)",
-        borderBottom: "1px solid rgba(255,255,255,0.1)",
-        padding: "7px 20px",
-        display: "flex", alignItems: "center", justifyContent: "center", gap: "10px",
-        fontSize: "0.68rem", fontWeight: 800, color: "rgba(255,255,255,0.88)",
-        letterSpacing: "0.1em", textTransform: "uppercase",
-      }}>
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="#FFD700"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        FREE FOR 7 DAYS ONLY — START NOW!
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="#FFD700"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-      </div>
+      {/* ── Hero visual top half ── */}
+      <div style={{ background: "linear-gradient(135deg, #012a35 0%, #014f5e 40%, #016875 100%)", padding: "28px 24px 24px", position: "relative", overflow: "hidden" }}>
 
-      {/* Main body */}
-      <div style={{ padding: "20px 20px 20px", position: "relative", zIndex: 1 }}>
+        {/* Background glow blobs */}
+        <div style={{ position: "absolute", top: -60, right: -40, width: 220, height: 220, borderRadius: "50%", background: "radial-gradient(circle, rgba(0,200,180,0.22) 0%, transparent 70%)", pointerEvents: "none" }} />
+        <div style={{ position: "absolute", bottom: -40, left: -30, width: 160, height: 160, borderRadius: "50%", background: "radial-gradient(circle, rgba(5,102,141,0.3) 0%, transparent 70%)", pointerEvents: "none" }} />
 
-        {/* Top row: icon + badges */}
-        <div style={{ display: "flex", alignItems: "flex-start", gap: "14px", marginBottom: "14px" }}>
-          {/* Animated icon */}
+        {/* Top: Urgency pill + badge row */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "20px", flexWrap: "wrap", gap: "8px" }}>
           <div style={{
-            width: 54, height: 54, borderRadius: "16px", flexShrink: 0,
-            background: "rgba(255,255,255,0.15)",
-            border: "2px solid rgba(255,255,255,0.3)",
-            backdropFilter: "blur(12px)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            boxShadow: "0 4px 20px rgba(0,0,0,0.15)",
+            display: "inline-flex", alignItems: "center", gap: "6px",
+            background: "rgba(255,215,0,0.18)", border: "1px solid rgba(255,215,0,0.45)",
+            borderRadius: "20px", padding: "5px 12px",
+            fontSize: "0.65rem", fontWeight: 800, color: "#FFD700", letterSpacing: "0.06em", textTransform: "uppercase",
           }}>
-            <svg viewBox="0 0 40 40" fill="none" width="28" height="28">
-              <circle cx="20" cy="20" r="18" stroke="white" strokeWidth="2" strokeOpacity="0.6"/>
-              <path d="M16 13l13 7-13 7V13z" fill="white"/>
-            </svg>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="#FFD700"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            Free for 7 Days
+          </div>
+          <span style={{
+            fontSize: "0.62rem", fontWeight: 700, padding: "4px 12px",
+            borderRadius: "20px", background: DIFF_PILL[featured.difficulty].bg, color: DIFF_PILL[featured.difficulty].color,
+          }}>{featured.difficulty}</span>
+        </div>
+
+        {/* Central: icon + title */}
+        <div style={{ display: "flex", alignItems: "center", gap: "18px", marginBottom: "22px" }}>
+          {/* Glowing play icon */}
+          <div style={{ position: "relative", flexShrink: 0 }}>
+            <div style={{
+              position: "absolute", inset: -6,
+              borderRadius: "50%",
+              background: "rgba(0,168,150,0.25)",
+              filter: "blur(8px)",
+            }} />
+            <div style={{
+              width: 64, height: 64, borderRadius: "50%",
+              background: "linear-gradient(135deg, #00A896, #028090)",
+              border: "2.5px solid rgba(255,255,255,0.3)",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              boxShadow: "0 8px 28px rgba(0,168,150,0.45)",
+              position: "relative",
+            }}>
+              <svg viewBox="0 0 40 40" fill="none" width="30" height="30">
+                <path d="M15 11l18 9-18 9V11z" fill="white"/>
+              </svg>
+            </div>
           </div>
 
-          <div style={{ flex: 1 }}>
-            {/* Pill badges */}
-            <div style={{ display: "flex", gap: "6px", marginBottom: "8px", flexWrap: "wrap" }}>
-              <span style={{
-                fontSize: "0.58rem", fontWeight: 800, letterSpacing: "0.08em",
-                padding: "3px 10px", borderRadius: "20px",
-                background: "rgba(255,215,0,0.25)", color: "#FFD700",
-                border: "1px solid rgba(255,215,0,0.4)",
-                textTransform: "uppercase",
-              }}>⭐ Recommended</span>
-              <span style={{
-                fontSize: "0.58rem", fontWeight: 700, padding: "3px 10px",
-                borderRadius: "20px",
-                background: DIFF_PILL[featured.difficulty].bg,
-                color: DIFF_PILL[featured.difficulty].color,
-              }}>{featured.difficulty}</span>
-            </div>
-
-            <h4 style={{ margin: "0 0 6px", fontSize: "1.12rem", color: "white", fontWeight: 900, lineHeight: 1.25, letterSpacing: "-0.01em" }}>
+          <div>
+            <p style={{ margin: "0 0 4px", fontSize: "0.68rem", fontWeight: 700, color: "rgba(255,255,255,0.55)", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+              {featured.company} · Foundation Pack
+            </p>
+            <h4 style={{ margin: 0, fontSize: "1.22rem", color: "white", fontWeight: 900, lineHeight: 1.25, letterSpacing: "-0.02em" }}>
               {featured.title}
             </h4>
-            <p style={{ margin: 0, fontSize: "0.75rem", color: "rgba(255,255,255,0.7)", fontWeight: 500, lineHeight: 1.5 }}>
-              {featured.company}
-            </p>
           </div>
         </div>
 
-        {/* Stats row */}
-        <div style={{
-          display: "flex", gap: "8px", marginBottom: "16px",
-        }}>
+        {/* Stats strip inside hero */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1px", background: "rgba(255,255,255,0.1)", borderRadius: "14px", overflow: "hidden" }}>
           {[
-            { icon: <Clock size={12}/>, label: featured.duration },
-            { icon: <HelpCircle size={12}/>, label: `${featured.questions} Questions` },
-            { icon: <ChevronRight size={12}/>, label: "No Negative Marking" },
-          ].map((stat, i) => (
-            <div key={i} style={{
-              display: "flex", alignItems: "center", gap: "5px",
-              background: "rgba(255,255,255,0.1)",
-              border: "1px solid rgba(255,255,255,0.15)",
-              borderRadius: "8px", padding: "5px 10px",
-              fontSize: "0.7rem", color: "rgba(255,255,255,0.85)", fontWeight: 600,
-              whiteSpace: "nowrap",
-            }}>
-              {stat.icon} {stat.label}
+            { icon: "⏱", label: "Duration", value: featured.duration },
+            { icon: "📝", label: "Questions", value: `${featured.questions} Qs` },
+            { icon: "✅", label: "Marking", value: "No Penalty" },
+          ].map((s, i) => (
+            <div key={i} style={{ background: "rgba(0,0,0,0.2)", padding: "10px 8px", textAlign: "center", backdropFilter: "blur(4px)" }}>
+              <div style={{ fontSize: "1rem", marginBottom: "3px" }}>{s.icon}</div>
+              <div style={{ color: "white", fontWeight: 800, fontSize: "0.78rem" }}>{s.value}</div>
+              <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.6rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em" }}>{s.label}</div>
             </div>
           ))}
         </div>
+      </div>
 
-        {/* CTA button — full width */}
+      {/* ── Bottom CTA half ── */}
+      <div style={{ background: "#ffffff", padding: "18px 24px" }}>
         {hasTakenTest ? (
-          <button
-            onClick={onResults}
-            style={{
-              width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: "8px",
-              padding: "13px 20px", borderRadius: "14px",
-              background: "rgba(255,255,255,0.15)",
-              border: "2px solid rgba(255,255,255,0.35)",
-              color: "white", fontWeight: 700, fontSize: "0.92rem",
-              cursor: "pointer", backdropFilter: "blur(10px)",
-              letterSpacing: "0.01em",
-            }}
-          >
-            <BarChart2 size={16} /> View My Results
-          </button>
+          <div style={{ display: "flex", gap: "10px" }}>
+            <button
+              onClick={onResults}
+              style={{
+                flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: "8px",
+                padding: "13px 16px", borderRadius: "14px",
+                background: "var(--gradient-primary)", border: "none",
+                color: "white", fontWeight: 800, fontSize: "0.92rem",
+                cursor: "pointer", boxShadow: "0 6px 20px rgba(2,128,144,0.3)",
+              }}
+            >
+              <BarChart2 size={16} /> View My Results
+            </button>
+            <button
+              onClick={onStart}
+              style={{
+                display: "flex", alignItems: "center", justifyContent: "center", gap: "6px",
+                padding: "13px 16px", borderRadius: "14px",
+                background: "rgba(2,128,144,0.07)", border: "1.5px solid rgba(2,128,144,0.2)",
+                color: "var(--primary-dark)", fontWeight: 700, fontSize: "0.85rem",
+                cursor: "pointer",
+              }}
+            >
+              <PlayCircle size={15} /> Retake
+            </button>
+          </div>
         ) : (
-          <button
-            onClick={onStart}
-            style={{
-              width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: "8px",
-              padding: "14px 20px", borderRadius: "14px",
-              background: "white", border: "none",
-              color: "var(--primary-dark)", fontWeight: 900, fontSize: "0.95rem",
-              cursor: "pointer",
-              boxShadow: "0 6px 20px rgba(0,0,0,0.2)",
-              letterSpacing: "0.01em",
-            }}
-          >
-            <PlayCircle size={17} color="var(--primary-dark)" /> Start Test Now — It&apos;s Free
-          </button>
+          <div>
+            <button
+              onClick={onStart}
+              style={{
+                width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: "10px",
+                padding: "15px 20px", borderRadius: "14px",
+                background: "linear-gradient(135deg, #012a35 0%, #028090 50%, #00A896 100%)",
+                border: "none", color: "white", fontWeight: 900, fontSize: "1rem",
+                cursor: "pointer", boxShadow: "0 8px 24px rgba(2,128,144,0.35)",
+                letterSpacing: "0.01em",
+              }}
+            >
+              <PlayCircle size={18} />
+              Start Test — It&apos;s Free
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+            <p style={{ textAlign: "center", margin: "10px 0 0", fontSize: "0.7rem", color: "var(--text-muted)", fontWeight: 500 }}>
+              50 questions · 60 minutes · Instant results
+            </p>
+          </div>
         )}
       </div>
     </div>
@@ -548,6 +540,7 @@ function DashboardContent() {
 
           {/* KPI strip (only after test taken) */}
           {hasTakenTest && testResult && (
+            <div className="kpi-scroll-wrapper">
             <div className="kpi-grid animate-fade-up" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "14px", marginBottom: "20px" }}>
               {/* Rank */}
               <div className="stat-card kpi-rank" style={{ padding: "16px", textAlign: "left", display: "flex", flexDirection: "column", gap: "4px", borderTop: "3px solid #028090" }}>
@@ -590,7 +583,7 @@ function DashboardContent() {
               </div>
 
               {/* Strongest Area */}
-              <div className="stat-card" style={{ padding: "16px", textAlign: "left", display: "flex", flexDirection: "column", gap: "4px", borderTop: "3px solid #F7A500" }}>
+              <div className="stat-card kpi-hide-mobile" style={{ padding: "16px", textAlign: "left", display: "flex", flexDirection: "column", gap: "4px", borderTop: "3px solid #F7A500" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "2px" }}>
                   <div style={{ width: 28, height: 28, borderRadius: "8px", background: "rgba(247,165,0,0.12)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <Zap size={14} color="var(--gold-dark)" />
@@ -635,6 +628,7 @@ function DashboardContent() {
                   </div>
                 );
               })()}
+            </div>
             </div>
           )}
 

@@ -863,20 +863,35 @@ input, select, textarea, button { font-family: inherit; }
   .test-card-meta { flex-wrap: wrap !important; gap: 10px !important; width: 100% !important; justify-content: flex-start !important; }
   .test-card-cta { width: 100% !important; }
 
-  /* ── KPI Grid — 2×2 on mobile, compact ── */
+  /* ── KPI Grid — single horizontal scroll row on mobile ── */
+  .kpi-scroll-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -14px 14px;
+    padding: 0 14px 8px;
+    scrollbar-width: none;
+  }
+  .kpi-scroll-wrapper::-webkit-scrollbar { display: none; }
   .kpi-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 8px !important;
-    margin-bottom: 14px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 10px !important;
+    margin-bottom: 0 !important;
+    width: max-content;
   }
-  .stat-card {
-    padding: 10px 11px !important;
-    border-radius: 12px !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important;
+  .kpi-grid .stat-card {
+    width: 130px !important;
+    min-width: 130px !important;
+    flex-shrink: 0 !important;
+    padding: 12px 12px !important;
+    border-radius: 14px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
   }
-  .kpi-value { font-size: 1.25rem !important; }
-  .kpi-sub { font-size: 0.75rem !important; }
-  .kpi-value-text { font-size: 0.82rem !important; }
+  .kpi-value { font-size: 1.3rem !important; }
+  .kpi-sub { font-size: 0.72rem !important; }
+  .kpi-value-text { font-size: 0.8rem !important; }
+  .kpi-hide-mobile { display: none !important; }
 
   .results-banner h2 { font-size: 2rem !important; }
 
