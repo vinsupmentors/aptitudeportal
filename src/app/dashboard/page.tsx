@@ -13,7 +13,7 @@ import { Category, CATEGORIES, TEST_CARDS, DIFF_PILL } from "./testData";
 /* ─────────────────────────────────────────────
    SVG ICON LIBRARY  — premium outlined vectors
 ───────────────────────────────────────────── */
-const CategoryIcons: Record<string, JSX.Element> = {
+const CategoryIcons: Record<string, React.ReactElement> = {
   "Basic Aptitude & Verbal Test": (
     <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="30" height="30">
       <rect x="6" y="5" width="22" height="30" rx="3" stroke="currentColor" strokeWidth="2" fill="none"/>
