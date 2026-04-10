@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String      @id @default(uuid())
+  name           String
+  degree         String
+  phone          String      @unique
+  email          String      @unique
+  state          String
+  city           String
+  password       String
+  hasTakenTest   Boolean     @default(false)
+  createdAt      DateTime    @default(now())
+
+  testResult     TestResult?
+}
+
+model TestResult {
+  id             String    @id @default(uuid())
+  userId         String    @unique
+  user           User      @relation(fields: [userId], references: [id])
+  totalScore     Int
+  verbalScore    Int
+  aptitudeScore  Int
+  completedAt    DateTime  @default(now())
+  strengths      String?
+  weaknesses     String?
+  areasToImprove String?
+  timeTaken      Int?
+  tabSwitches    Int       @default(0)
+}

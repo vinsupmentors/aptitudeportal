@@ -211,27 +211,16 @@ function FeaturedTestCard({
         {/* Right: CTA */}
         <div style={{ flexShrink: 0 }}>
           {hasTakenTest ? (
-            <div style={{ display: "flex", flexDirection: "column", gap: "8px", alignItems: "flex-end" }}>
-              <button onClick={onResults} style={{
-                display: "flex", alignItems: "center", gap: "7px",
-                padding: "11px 22px", borderRadius: "12px",
-                background: "var(--gradient-primary)", border: "none",
-                color: "white", fontWeight: 800, fontSize: "0.88rem",
-                cursor: "pointer", boxShadow: "0 6px 20px rgba(2,128,144,0.3)",
-                whiteSpace: "nowrap",
-              }}>
-                <BarChart2 size={15} /> View Results
-              </button>
-              <button onClick={onStart} style={{
-                display: "flex", alignItems: "center", gap: "6px",
-                padding: "7px 14px", borderRadius: "10px",
-                background: "transparent", border: "1px solid rgba(2,128,144,0.25)",
-                color: "var(--text-muted)", fontWeight: 600, fontSize: "0.75rem",
-                cursor: "pointer", whiteSpace: "nowrap",
-              }}>
-                <PlayCircle size={13} /> Retake Test
-              </button>
-            </div>
+            <button onClick={onResults} style={{
+              display: "flex", alignItems: "center", gap: "7px",
+              padding: "11px 22px", borderRadius: "12px",
+              background: "var(--gradient-primary)", border: "none",
+              color: "white", fontWeight: 800, fontSize: "0.88rem",
+              cursor: "pointer", boxShadow: "0 6px 20px rgba(2,128,144,0.3)",
+              whiteSpace: "nowrap",
+            }}>
+              <BarChart2 size={15} /> View Results
+            </button>
           ) : (
             <button onClick={onStart} style={{
               display: "flex", alignItems: "center", gap: "8px",
