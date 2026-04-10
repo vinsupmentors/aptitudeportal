@@ -72,6 +72,27 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ─── Disable Selection & Copying ─── */
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+  -webkit-touch-callout: none;
+}
+
+input, textarea, select {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  cursor: text;
+}
+
+select { cursor: pointer; }
+button, a, [role="button"] { cursor: pointer; }
+
 body::before {
   content: '';
   position: fixed;
