@@ -4,9 +4,9 @@ import prisma from '@/lib/prisma';
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, degree, phone, email, state, city, password } = body;
+    const { name, phone, email, state, city, password } = body;
 
-    if (!name || !degree || !phone || !email || !state || !city || !password) {
+    if (!name || !phone || !email || !state || !city || !password) {
       return NextResponse.json({ error: 'All fields are required.' }, { status: 400 });
     }
 
@@ -22,7 +22,7 @@ export async function POST(req: Request) {
     }
 
     const newUser = await prisma.user.create({
-      data: { name, degree, phone, email, state, city, password },
+      data: { name, phone, email, state, city, password },
     });
 
     return NextResponse.json({ message: 'Registration successful', userId: newUser.id }, { status: 201 });

@@ -5,33 +5,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Eye, EyeOff, UserPlus, CheckCircle, ArrowRight } from "lucide-react";
 
-const DEGREES = [
-  "B.Tech - Computer Science Engineering",
-  "B.Tech - Information Technology",
-  "B.Tech - Electronics & Communication",
-  "B.Tech - Electrical Engineering",
-  "B.Tech - Mechanical Engineering",
-  "B.Tech - Civil Engineering",
-  "B.Tech - Data Science & AI",
-  "B.E. - Computer Science",
-  "B.E. - Electronics",
-  "B.Sc - Computer Science",
-  "B.Sc - Information Technology",
-  "B.Sc - Mathematics",
-  "B.Sc - Data Science",
-  "BCA - Computer Applications",
-  "MCA - Computer Applications",
-  "M.Tech - Computer Science",
-  "M.Tech - Software Engineering",
-  "M.Tech - Data Science",
-  "MBA - Business Administration",
-  "M.Sc - Computer Science",
-  "M.Sc - Mathematics",
-  "B.Com - Commerce",
-  "BBA - Business Administration",
-  "B.Sc - Physics",
-  "Diploma - Computer Engineering",
-];
+
 
 const LOCATIONS: Record<string, string[]> = {
   "Andhra Pradesh": ["Visakhapatnam", "Vijayawada", "Guntur", "Tirupati", "Kurnool", "Rajahmundry", "Kakinada"],
@@ -74,7 +48,7 @@ export default function RegisterPage() {
   const router = useRouter();
   const [done, setDone] = useState(false);
   const [formData, setFormData] = useState({
-    name: "", degree: "", phone: "", email: "",
+    name: "", phone: "", email: "",
     state: "", city: "", password: "",
   });
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -179,13 +153,13 @@ export default function RegisterPage() {
 
       {/* Right Form Panel */}
       <div className="auth-form-side">
-        <div className="auth-card animate-fade-up" style={{ maxWidth: 520 }}>
-          <div style={{ textAlign: "center", marginBottom: "32px" }}>
-            <div style={{ margin: "0 auto 16px", display: "flex", justifyContent: "center" }}>
-              <Image src="/logo.png" alt="Vinsup Skill Academy" width={160} height={64} style={{ objectFit: "contain" }} priority />
+        <div className="auth-card animate-fade-up" style={{ maxWidth: 480, padding: "32px 36px" }}>
+          <div style={{ textAlign: "center", marginBottom: "24px" }}>
+            <div style={{ margin: "0 auto 12px", display: "flex", justifyContent: "center" }}>
+              <Image src="/logo.png" alt="Vinsup Skill Academy" width={140} height={56} style={{ objectFit: "contain" }} priority />
             </div>
-            <h2 style={{ fontSize: "1.7rem", marginBottom: "6px" }}>Create Account</h2>
-            <p style={{ color: "var(--text-muted)", fontSize: "0.9rem" }}>Fill in your details to get started</p>
+            <h2 style={{ fontSize: "1.45rem", marginBottom: "4px" }}>Create Account</h2>
+            <p style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>Fill in your details to get started</p>
           </div>
 
           {error && (
@@ -205,13 +179,7 @@ export default function RegisterPage() {
               <input required type="text" name="name" className="form-input" placeholder="Arjun Sharma" value={formData.name} onChange={handleChange} />
             </div>
 
-            <div className="form-group">
-              <label className="form-label">Degree / Qualification</label>
-              <select required name="degree" className="form-input" value={formData.degree} onChange={handleChange}>
-                <option value="" disabled>Select your degree</option>
-                {DEGREES.map(d => <option key={d} value={d}>{d}</option>)}
-              </select>
-            </div>
+
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
               <div className="form-group">

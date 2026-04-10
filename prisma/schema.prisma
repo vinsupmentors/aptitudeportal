@@ -9,7 +9,7 @@ datasource db {
 model User {
   id             String      @id @default(uuid())
   name           String
-  degree         String
+  degree         String?
   phone          String      @unique
   email          String      @unique
   state          String
